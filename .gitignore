@@ -1,0 +1,7 @@
+# Geçici dosyalar backend
+backend/app/__pycache__
+backend/chat/__pycache__
+
+# Geçici dosyalar frontend
+frontend/.parcel-cache
+frontend/dist
