@@ -1,0 +1,10 @@
+Django>=4.2,<5.0
+daphne
+channels
+channels_redis
+django-allauth
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+dj-rest-auth
+requests

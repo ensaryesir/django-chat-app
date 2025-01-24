@@ -1,1 +1,17 @@
-*.py linguist-language=python
+*.txt text eol=lf
+*.sh text eol=lf
+
+
+*.py linguist-detectable=true
+*.js linguist-detectable=false
+*.html linguist-detectable=false
+*.xml linguist-detectable=false
+*.css linguist-detectable=false
+*.scss linguist-detectable=false
+*.sass linguist-detectable=false    
+*.less linguist-detectable=false
+*.styl linguist-detectable=false
+*.coffee linguist-detectable=false
+
+# Ensure the project is detected as Django
+*.py linguist-language=Python

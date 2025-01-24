@@ -1,7 +1,26 @@
-# Geçici dosyalar backend
+# Temporary files for backend
 backend/app/__pycache__
 backend/chat/__pycache__
 
-# Geçici dosyalar frontend
+# Temporary files for frontend
 frontend/.parcel-cache
 frontend/dist
+
+# VS Code workspace settings
+.vscode/
+
+# Environment directories
+env/
+.env/
+venv/
+
+# Node modules
+frontend/node_modules
+node_modules/
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+media/

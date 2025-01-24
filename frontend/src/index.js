@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk/dist/redux-thunk.legacy-esm";
+import thunk from "redux-thunk";
 import "antd/dist/antd";
 import reducer from "./store/reducers/auth";
 import App from "./App";

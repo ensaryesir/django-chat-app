@@ -40,7 +40,7 @@ class Sidepanel extends React.Component {
             <div id="sidepanel">
             <div id="profile">
                 <div className="wrap">
-                <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" className="online" alt="" />
+                
                 <p>Mike Ross</p>
                 <i className="fa fa-chevron-down expand-button" aria-hidden="true"></i>
                 <div id="status-options">
