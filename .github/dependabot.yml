@@ -1,18 +1,15 @@
 version: 2
 updates:
-  # Python dependencies
+  # Python bağımlılıklarını devre dışı bırak
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
     open-pull-requests-limit: 0
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
-
-  # Node.js dependencies
+    
+  # npm bağımlılıklarını devre dışı bırak
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
       interval: "monthly"
-    open-pull-requests-limit: 0 
+    open-pull-requests-limit: 0

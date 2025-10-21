@@ -24,3 +24,10 @@ __pycache__/
 
 # Django
 media/
+*.sqlite3
+db.sqlite3
+
+# Environment variables - SECURITY CRITICAL
+.env
+.env.local
+.env.*.local

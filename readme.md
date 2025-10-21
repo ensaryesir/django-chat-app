@@ -1,101 +1,153 @@
-# Chat App
+# Django Chat App
 
-A modern and user-friendly chat application that allows you to communicate in real-time.
+Gerçek zamanlı mesajlaşma özelliği olan modern bir chat uygulaması.
 
-## 🛠️ Technologies
+## 🛠️ Teknolojiler
 
-- **Backend:** Django, Django REST framework, Channels
-- **Frontend:** React.js
-- **Database:** SQLite
-- **Authentication:** JWT (JSON Web Tokens)
-- **Other:** Redis for caching and WebSocket management
+- **Backend:** Django 5.1.4, Django REST Framework, Channels
+- **Frontend:** React.js 18.3.1, Redux, Ant Design
+- **Database:** SQLite (Development)
+- **Authentication:** Token-based Authentication
+- **WebSocket:** Django Channels + Redis
 
-## 📦 Dependencies
+## 📋 Gereksinimler
 
-The project uses the following npm packages and Python packages:
+- Python 3.8+
+- Node.js 16+
+- Redis Server
 
-### Backend (Python)
-```json
-{
-    "Django": "^4.2",
-    "djangorestframework": "^3.14.0",
-    "channels": "^4.0.0",
-    "channels_redis": "^4.0.0",
-    "dj-rest-auth": "^3.0.0",
-    "django-allauth": "^0.51.0",
-    "daphne": "^4.0.0",
-    "redis": "^4.0.0"
-}
+## ⚙️ Kurulum
+
+### 1. Projeyi Klonlama
+
+```bash
+git clone https://github.com/ensaryesir/django-chat-app.git
+cd django-chat-app
 ```
 
-### Frontend (JavaScript)
-```json
-{
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0"
-}
+### 2. Environment Değişkenlerini Ayarlama
+
+`.env.example` dosyasını kopyalayıp `.env` olarak kaydedin:
+
+```bash
+copy .env.example .env
 ```
 
-These packages will be automatically installed with the `npm install` and `pip install -r requirements.txt` commands.
+`.env` dosyasını açın ve SECRET_KEY oluşturun:
 
-## ⚙️ Installation Steps
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 
-### 1. Prerequisites Installation
+Oluşan key'i `.env` dosyasındaki `SECRET_KEY` alanına yapıştırın.
 
-#### Redis Installation (Windows)
-1. [Download Redis for Windows](https://github.com/microsoftarchive/redis/releases)
-2. Extract the zip file to a directory
-3. Open Command Prompt and navigate to the Redis directory
-4. Run the Redis server:
-   ```bash
-   redis-server.exe
-   ```
-5. Open another Command Prompt and run the Redis CLI:
-   ```bash
-   redis-cli.exe
-   ```
+**Development için `.env` örneği:**
+```env
+SECRET_KEY=your-generated-secret-key-here
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+CORS_ALLOWED_ORIGINS=http://localhost:1234
+```
 
-### 2. Project Setup
+### 3. Backend Kurulumu
 
-1. Clone the project:
-   ```bash
-   git clone https://github.com/your-username/chat-app.git
-   cd chat-app
-   ```
+```bash
+# Virtual environment oluşturma (opsiyonel ama önerilir)
+python -m venv venv
+venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/Mac
 
-2. Install backend dependencies:
-   ```bash
-   cd backend
-   python -m venv venv
-   venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+# Bağımlılıkları yükleme
+pip install -r requirements.txt
 
-3. Install frontend dependencies:
-   ```bash
-   cd ../frontend
-   npm install
-   ```
+# Database migration
+cd backend
+python manage.py migrate
 
-4. Run the database migrations:
-   ```bash
-   cd ../backend
-   python manage.py migrate
-   ```
+# Superuser oluşturma (opsiyonel)
+python manage.py createsuperuser
+```
 
-5. Run the backend server:
-   ```bash
-   python manage.py runserver
-   ```
+### 4. Frontend Kurulumu
 
-6. Run the frontend server:
-   ```bash
-   cd ../frontend
-   npm start
-   ```
+```bash
+cd frontend
+npm install
+```
 
-7. Visit in your browser:
-   ```
-   http://localhost:1234
-   ```
+### 5. Redis Kurulumu ve Çalıştırma
+
+**Windows için:**
+1. [Redis for Windows](https://github.com/microsoftarchive/redis/releases) indirin
+2. Zip dosyasını çıkartın
+3. Redis'i başlatın:
+```bash
+redis-server.exe --port 6380
+```
+
+**Linux/Mac için:**
+```bash
+sudo apt-get install redis-server  # Ubuntu/Debian
+brew install redis  # Mac
+
+# Redis'i başlatma
+redis-server --port 6380
+```
+
+## 🚀 Uygulamayı Çalıştırma
+
+### Backend Sunucusunu Başlatma
+
+```bash
+cd backend
+python manage.py runserver
+```
+
+Backend: `http://localhost:8000`
+
+### Frontend Sunucusunu Başlatma
+
+Yeni bir terminal açın:
+
+```bash
+cd frontend
+npm start
+```
+
+Frontend: `http://localhost:1234`
+
+## 📱 Kullanım
+
+1. Tarayıcınızda `http://localhost:1234` adresini açın
+2. Yeni bir hesap oluşturun veya giriş yapın
+3. Chat odalarına katılın ve mesajlaşmaya başlayın
+
+## 🔧 Geliştirme Komutları
+
+**Backend:**
+```bash
+# Yeni migration oluşturma
+python manage.py makemigrations
+
+# Migration çalıştırma
+python manage.py migrate
+
+# Admin paneli
+http://localhost:8000/admin
+```
+
+**Frontend:**
+```bash
+# Development server
+npm start
+
+# Production build
+npm run build
+```
+
+## 📝 Notlar
+
+- Redis varsayılan olarak `6380` portunda çalışıyor (ayarlanabilir)
+- Database dosyası: `backend/db.sqlite3`
+- Static dosyalar: `backend/static/`
+- Development modunda `DEBUG=True` olmalı
